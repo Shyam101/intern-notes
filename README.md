@@ -68,3 +68,51 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+import './App.css';
+import { useState, useEffect } from 'react';
+import { collection, getDocs, addDoc } from 'firebase/firestore';
+import { db } from './firebase-config';
+
+function App() {
+
+  const [notes, setNotes] = useState([]);
+  const [note, setNote] = useState({})
+  const notesCollectionRef = collection(db, "notes");
+
+  useEffect(() => {
+
+    const getNotes = async () => {
+      const data = await getDocs(notesCollectionRef);
+      setNotes(data.docs.map( doc => ({day:doc.data().day.toDate().toString(), note:doc.data().note})));
+    }
+
+    getNotes()
+  }, [])
+
+  const handleChange = (e) => {
+      e.preventDefault();
+      setNote({[e.target.name]: e.target.value});
+      console.log(note)
+  }
+
+
+  return (
+    <div className="App">
+      <input type="date" name="day" value={note.day} onChange={handleChange}/>
+      <input type="text" name="note" value={note.note} onChange={handleChange}/>
+      <button>Submit</button>
+      {console.log(notes)}
+      {notes.map( (note, index) => {
+        return (
+          <div key={index}>
+            <h1>Second: {note.day}</h1>
+            <h2>Note: {note.note}</h2>
+          </div>
+        )
+      })}
+    </div>
+  );
+}
+
+export default App;

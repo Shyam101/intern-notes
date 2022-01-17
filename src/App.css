@@ -1,38 +1,274 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  /* background-color: red; */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.flex--vertical {
   display: flex;
   flex-direction: column;
+}
+
+.col--full__hight {
+  flex-grow: 1;
+}
+
+#root,
+.App {
+  height: 100vh;
+}
+
+.col {
+  width: 100%;
+}
+
+.side__menu {
+  /* padding: 1rem; */
+  border-right: thin dotted black;
+  width: 30%;
+  min-width: 300px;
+  background-color: beige;
+}
+
+.note__view {
+  margin: 2rem 0rem;
+}
+
+.label {
+  margin: 1rem;
+  font-size: large;
+}
+
+.nav {
+  background-color: #1C7ED4;
+  color: white;
+  padding: 0.5rem 1rem;
+}
+
+.brand__title {
+  margin-left: 1rem;
+  font-size: 48px;
+}
+
+.nav__list {
+  margin-left: auto;
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.nav__link {
+  margin-left: 1rem;
+}
+
+.notes__page {
+  height: 100%;
+}
+
+.notes__page > * {
+  height: 100%;
+}
+
+.Calendar__parent {
+  width: max-content;
+  margin: 0 auto;
+  border: solid thin black;
+}
+
+textarea {
+  width: 100%;
+  /* height: 100%; */
+  background-color: inherit;
+  border: none;
+  outline: none;
+  padding: 0 2rem;
+  font-size: 1.2rem;
+  white-space: pre-wrap;
+}
+
+textarea:active,
+textarea:focus {
+  border: none;
+  outline: none;
+}
+
+.note-container {
+  background-color: rgb(247, 247, 178);
+  position: relative;
+  padding-bottom: 2rem;
+}
+
+.note-container h2 {
+  font-size: 2.5rem;
+}
+
+.side__menu--hidden {
+  display: none;
+}
+
+.note__area--heading {
+  margin: 2rem;
+  border-bottom: solid 1px black;
+}
+
+.note__read__only {
+  margin: 0 2rem;
+}
+
+.login__page {
+  height: 100%;
+  background-image: url("./images/login-bg2.jpg");
+  background-size: cover;
+  background-position: center top;
+}
+
+.form__container {
+  /* justify-self: flex-end */
+  margin:0  auto;
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.4);
+  /* box-shadow: 10px 10px; */
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  min-width: 350px;
+  border-radius: 5px;
+}
+
+.form__container > * {
+  border-radius: 5px;
+}
+
+.form__title {
+  width: 100%;
+  text-align: center;
+  font-size: xx-large;
+  /* background-color: aqua; */
+  margin-bottom: 2rem;
+}
+
+.form__title:hover {
+  cursor: pointer;
+}
+
+.form__label {
+  display: block;
+  margin-bottom: -1rem;
+  font-size: x-large;
+  font-weight: 500;
+}
+
+.form__label~.form__label {
+  margin-top: 1.5rem;
+}
+
+.form__container input[type="text"], .form__container input[type="password"] {
+  width: 100%;
+  padding: 0.25rem;
+  font-size: 1.1rem;
+}
+
+.form__title--active {
+  font-weight: 900;
+  color: green;
+  border-bottom: solid 3px green;
+}
+
+.form__title + .form__title {
+  margin-left: 1rem;
+}
+
+.btn {
+  padding: 0.25rem 0.5rem;
+  width: max-content;
+  border-radius: 5px;
+  font-size: 1.25rem;
+}
+
+.btn--green {
+  background-color: green;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.btn--hover__red:hover {
+  background-color: red;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.form__btn {
+  margin-top: 1rem;
+}
+
+/*loading animation*/
+.loader {
+  position: relative;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 70px;
+  height: 70px;
+  /* left:50%; */
+  top:40%;
+  margin: 0 auto;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+#overlay{
+    position: absolute;
+    top:0px;
+    left:0px;
+    width: 100%;
+    height: 100%;
+    background: black;
+    opacity: .5;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#notification {
+  position: absolute;
+  bottom: 10%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: max-content;
+  height: 30px;
+  padding: 0 1rem;
+  text-align: center;
+  font-size: 1.4rem;
+  border-radius: 100px;
+  background: rgb(0, 0, 0, 0.2);
+  /* color: rebeccapurple; */
+}
+
+.general__notes {
+  /* margin-top: 1rem; */
+  background-color:#1C7ED4;
+  width: max-content;
+  margin: 1rem auto;
+  width: 280px;
+  padding: 1rem;
+  font-size: 1.5rem;
+  text-align: center;
+  font-weight: 600;
+  color: white;
+}
+
+.general__notes:hover {
+  cursor: pointer;
 }
