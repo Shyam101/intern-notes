@@ -50,6 +50,7 @@ const LoginPage = () => {
     return (
         <div className='login__page row'>
             <div className='form__container'>
+                <div className='title-login'>Get your notes</div>
                 <div className="row">
                     <span className={isSingInForm ? 'form__title form__title--active' : 'form__title'} onClick={() => setIsSingInForm(true)}>Sing In</span>
                     <span className={isSingInForm ? 'form__title' : 'form__title form__title--active'} onClick={() => setIsSingInForm(false)}>Sing Up</span>
