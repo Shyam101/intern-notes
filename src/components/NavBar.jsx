@@ -22,7 +22,7 @@ const NavBar = ({isMenuOpen, setIsMenuOpen, isUserLoggedIn}) => {
             <ul className='nav__list'>
                 {isUserLoggedIn && <button onClick={logout} className='btn btn--green btn--hover__red'>Sing out</button>}
                 <a href="https://github.com/Shyam101" className='nav__link'>
-                    <img src={githubIcon} alt='fork on github'/>
+                    <div>Find me </div><img src={githubIcon} alt='fork on github'/>
                 </a>
             </ul>
         </nav>
